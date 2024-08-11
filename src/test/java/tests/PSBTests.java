@@ -49,7 +49,7 @@ class PSBTests extends TestBase {
                     .setCheckCreditPeriodInput("3");
     }
     @Test
-        public void ipotekaHouseMinimumDownPayment() {
+        public void ipotekaHouseMinimumDownPaymentTest() {
             pageIpoteka.openPage()
                     .setCloseCookieInput()
                     .setCheckHeaderIpotekaInput("Ипотека")
@@ -80,7 +80,7 @@ class PSBTests extends TestBase {
                     .setCheckCreditPeriodInput("30");
     }
     @Test
-        public void ipotekaHouseMaximumDownPayment() {
+        public void ipotekaHouseMaximumDownPaymentTest() {
             pageIpoteka.openPage()
                     .setCloseCookieInput()
                     .setCheckHeaderIpotekaInput("Ипотека")
