@@ -20,6 +20,8 @@ import java.util.Map;
         //эта аннотация выполняет НАСТРОЙКИ которые в ней заданы ПЕРЕД ВСЕМИ тестами один раз, например настройка определенного размера браузера
         static void beforeAll() {
             Configuration.browserSize = "1920x1080";
+            Configuration.browser = System.getProperty("browser", "chrome");
+            Configuration.browserVersion = System.getProperty("browserVersion", "126");
             Configuration.pageLoadStrategy = "eager"; //стратегия загрузки, если страница долго грузится, с ее помощью мы не будем дожидаться полной загрузки страницы
             Configuration.baseUrl = "https://www.psbank.ru/"; //выносим основной сайт, а в тестах уже оставляем только конкретный путь к сайту
             //Configuration.holdBrowserOpen = true; //true оставляет открытым, false закрывает
