@@ -17,35 +17,34 @@ import java.util.Map;
 
 
         @BeforeAll
-        //эта аннотация выполняет НАСТРОЙКИ которые в ней заданы ПЕРЕД ВСЕМИ тестами один раз, например настройка определенного размера браузера
         static void beforeAll() {
             Configuration.browserSize = "1920x1080";
             //Configuration.browser = System.getProperty("browser", "chrome");
             //Configuration.browserVersion = System.getProperty("browserVersion", "126");
-            //Configuration.pageLoadStrategy = "eager"; //стратегия загрузки, если страница долго грузится, с ее помощью мы не будем дожидаться полной загрузки страницы
-            Configuration.baseUrl = "https://www.psbank.ru"; //выносим основной сайт, а в тестах уже оставляем только конкретный путь к сайту
-            //Configuration.holdBrowserOpen = true; //true оставляет открытым, false закрывает
-            //Configuration.timeout = 50000; //по дефолту таймаут 4000
-            //Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub"; //для удаленного запуска Selenoid
+            //Configuration.pageLoadStrategy = "eager";
+            Configuration.baseUrl = "https://www.psbank.ru";
+            //Configuration.holdBrowserOpen = true;
+            //Configuration.timeout = 50000;
+            //Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
             DesiredCapabilities capabilities = new DesiredCapabilities();
             capabilities.setCapability("selenoid:options", Map.<String, Object>of(
                     "enableVNC", true,
                     "enableVideo", true
-            )); //Настройки для Selenoid (включение VNC и записи видео).
-            Configuration.browserCapabilities = capabilities; //Присвоение настроек конфигурации браузера
+            ));
+            Configuration.browserCapabilities = capabilities;
         }
         @BeforeEach
-            //метод выполняется перед каждым тестом
+
         void setUpBeforeEach() {
-            SelenideLogger.addListener("AllureSelenide", new AllureSelenide()); //включение слушателя Аллюр
+            SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
         }
         @AfterEach
-            //выполняется после каждого теста
+
         void addAttachments() {
-            Attach.screenshotAs("Last screenshot"); //Скриншот последнего состояния браузера.
-            Attach.pageSource(); //Исходный код страницы.
-            Attach.browserConsoleLogs(); //Логи консоли браузера.
-            Attach.addVideo(); //Видео записи теста.
-            Selenide.closeWebDriver(); //Закрывает браузер.
+            Attach.screenshotAs("Last screenshot");
+            Attach.pageSource();
+            Attach.browserConsoleLogs();
+            Attach.addVideo();
+            Selenide.closeWebDriver();
         }
     }
