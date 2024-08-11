@@ -25,7 +25,7 @@ import java.util.Map;
             //Configuration.pageLoadStrategy = "eager"; //стратегия загрузки, если страница долго грузится, с ее помощью мы не будем дожидаться полной загрузки страницы
             Configuration.baseUrl = "https://www.psbank.ru"; //выносим основной сайт, а в тестах уже оставляем только конкретный путь к сайту
             //Configuration.holdBrowserOpen = true; //true оставляет открытым, false закрывает
-            //Configuration.timeout = 5000; по дефолту таймаут 4000
+            Configuration.timeout = 50000; //по дефолту таймаут 4000
             Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub"; //для удаленного запуска Selenoid
             DesiredCapabilities capabilities = new DesiredCapabilities();
             capabilities.setCapability("selenoid:options", Map.<String, Object>of(
