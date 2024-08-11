@@ -58,3 +58,8 @@ tasks.withType(Test) {
         }
     }
 }
+task regression_test(type: Test) {     //потом удалить эту таску
+    useJUnitPlatform {
+        includeTags("regression")
+    }
+}
